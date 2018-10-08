@@ -4,9 +4,8 @@ namespace StudentExercises {
         public string LastName { get; set; }
         public string SlackHandle { get; set; }
         public string Cohort { get; set; }
-
-        public void AssignExercise(Student student){
-            
+        public void AssignExercise(Student student, Exercise exercise){
+            student.AddExercise(exercise);
         }
     }
 }

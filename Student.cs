@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace StudentExercises {
@@ -7,5 +8,10 @@ namespace StudentExercises {
         public string SlackHandle { get; set; }
         public string Cohort { get; set; }
         public List<Exercise> Exercises = new List<Exercise>();
+
+        public void AddExercise(Exercise exercise)
+        {
+            Exercises.Add(exercise);
+        }
     }
 }
