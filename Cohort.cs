@@ -5,8 +5,8 @@ namespace StudentExercises {
 
         public string CohortName { get; set; }
 
-        public List<string> Instructors = new List<string>();
+        public List<Student> Students = new List<Student>();
 
-        public List<string> Student = new List<string>();
+        public List<Instructor> Instructors = new List<Instructor>();
     }
 }
