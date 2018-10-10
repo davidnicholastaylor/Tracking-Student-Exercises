@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace StudentExercises
 {
@@ -94,7 +95,7 @@ namespace StudentExercises
                 SlackHandle = "Falcon4Life"
             };
 
-            // Assign
+            // Assign exercise
 
             steve.AssignExercise(alex, chickenMonkey);
             kimmy.AssignExercise(helen, chickenMonkey);
@@ -105,6 +106,40 @@ namespace StudentExercises
             kimmy.AssignExercise(jon, battleOfBands);
             kimmy.AssignExercise(helen, reactNutshell);
             meg.AssignExercise(madi, reactNutshell);
+            meg.AssignExercise(madi, Library);
+
+            // Create a list of students
+            List<Student> students = new List<Student>(){
+                alex,
+                madi,
+                jon,
+                helen
+            };
+
+            // Create a list of exercises
+            List<Exercise> exercises = new List<Exercise>(){
+                chickenMonkey,
+                battleOfBands,
+                reactNutshell,
+                Library
+            };
+            // Loop through exercise list
+            // Create a list for assigned students
+            // Loop through student list
+            // If a students exercise contains the looped exercise list
+            // Aadd an assignedStudent to the exercise by their FullName
+            // Console log the list exercises with all the students working on each exercise
+            foreach (Exercise exercise in exercises)
+            {   
+                List<string> assignedStudents = new List<string>();
+                foreach (Student student in students) {
+                if (student.Exercises.Contains(exercise))
+                {
+                    assignedStudents.Add(student.FullName);
+                }
+            }
+                    Console.WriteLine($"{exercise.ExerciseName} is being worked on by {string.Join(", ", assignedStudents)}");
         }
     }
+}
 }
