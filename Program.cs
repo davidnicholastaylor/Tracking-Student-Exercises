@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StudentExercises
 {
@@ -123,6 +124,21 @@ namespace StudentExercises
                 reactNutshell,
                 Library
             };
+
+            // Create a list of cohorts
+            List<Cohort> cohorts = new List<Cohort>(){
+                unicorn,
+                cyclops, 
+                velociraptor
+            };
+
+            // Create a list of instructors
+            List<Instructor> instructors = new List<Instructor>(){
+                steve,
+                kimmy,
+                meg
+            };
+
             // Loop through exercise list
             // Create a list for assigned students
             // Loop through student list
@@ -138,8 +154,36 @@ namespace StudentExercises
                     assignedStudents.Add(student.FullName);
                 }
             }
-                    Console.WriteLine($"{exercise.ExerciseName} is being worked on by {string.Join(", ", assignedStudents)}");
+                    // Console.WriteLine($"{exercise.ExerciseName} is being worked on by {string.Join(", ", assignedStudents)}");
+            }
+
+            // List exercises for Javascript with where linq method
+
+            IEnumerable<Exercise> JS = from JavaScript in exercises
+            where JavaScript.Language == "JavaScript"
+            select JavaScript;
+
+            JS.ToList().ForEach(e => Console.WriteLine(e.ExerciseName));
+
+            // List students in a cohort with linq method
+            IEnumerable<Student> stu = from student in students
+            where student.Cohort == velociraptor
+            select student;
+
+            stu.ToList().ForEach(s => Console.WriteLine($"{s.FullName} is in Cohort {s.Cohort.CohortName}"));
+
+            // List instructors in a cohort with linq method
+            IEnumerable<Instructor> inst = from instructor in instructors
+            where instructor.Cohort == velociraptor
+            select instructor;
+
+            inst.ToList().ForEach(i => Console.WriteLine($"{i.FirstName} {i.LastName} teaches {i.Cohort.CohortName}"));
+
+            // List students by their lastname
+
+            var stud = students.Select(s => s.LastName);
+
+            stud.ToList().ForEach(s => Console.WriteLine(s));
         }
     }
-}
 }
