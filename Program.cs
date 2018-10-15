@@ -72,6 +72,12 @@ namespace StudentExercises
             helen.LastName = "Hades";
             helen.Cohort = velociraptor;
             helen.SlackHandle = "HelenOfHades";
+            
+            Student lily = new Student();
+            lily.FirstName = "Lily";
+            lily.LastName = "Paddington";
+            lily.Cohort = unicorn;
+            lily.SlackHandle = "Lillypad";
 
             // Instructors
             Instructor steve = new Instructor()
@@ -104,6 +110,7 @@ namespace StudentExercises
             meg.AssignExercise(madi, chickenMonkey);
             steve.AssignExercise(alex, reactNutshell);
             kimmy.AssignExercise(helen, battleOfBands);
+            kimmy.AssignExercise(helen, Library);
             kimmy.AssignExercise(jon, battleOfBands);
             kimmy.AssignExercise(helen, reactNutshell);
             meg.AssignExercise(madi, reactNutshell);
@@ -114,7 +121,8 @@ namespace StudentExercises
                 alex,
                 madi,
                 jon,
-                helen
+                helen,
+                lily
             };
 
             // Create a list of exercises
@@ -184,6 +192,31 @@ namespace StudentExercises
             var stud = students.Select(s => s.LastName);
 
             stud.ToList().ForEach(s => Console.WriteLine(s));
+
+            // Display students that aren't working on exercises
+
+            IEnumerable<Student> studies = from student in students
+            where student.Exercises.Count() == 0
+            select student;
+
+            studies.ToList().ForEach(study => Console.WriteLine(study.FullName));
+
+            // Which student is working on the most exercises? Make sure one of your students has more exercises than the others.
+            var mostStudent = (from student in students
+            orderby student.Exercises.Count() descending 
+            select new {FirstName = student.FirstName, Exercises = student.Exercises.Count()}).ToList().FirstOrDefault();
+
+            Console.WriteLine($"The student with the most exercises is {mostStudent.FirstName}");
+
+            // How many students in each cohort?
+
+            var numberStudents = from student in students
+            group student by student.Cohort into studentNumber
+            select new {
+                Cohort = studentNumber.Key,
+                Students = studentNumber.ToList()
+            };
+            numberStudents.ToList().ForEach(numbered => Console.WriteLine($"{numbered.Cohort.CohortName} has {numbered.Students.Count()} students"));
         }
     }
 }
