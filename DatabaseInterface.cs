@@ -114,5 +114,38 @@ namespace StudentExercises {
                 }
             }
         }
+        public static void CheckStudentExerciseTable () {
+            SqliteConnection db = DatabaseInterface.Connection;
+
+            try {
+                List<StudentExercise> studentExercises = db.Query<StudentExercise>
+                    ("SELECT Id FROM StudentExercise").ToList ();
+            } catch (System.Exeception ex) {
+                if (ex.Message.Contains ("no such table")) {
+                    db.Execute (@"
+                    CREATE TABLE StudentExercise(
+                    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                    StudentId INTEGER NOT NULL,
+                    ExerciseId INTEGER NOT NULL,
+                        FOREIGN KEY(StudentId)  REFERENCES Student(Id),
+                        FOREIGN KEY(ExerciseId)  REFERENCES Exercise(Id));
+                    ");
+
+                    db.Execute (@"
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (8, 1);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (8, 3);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (7, 1);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (7, 3);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (7, 4);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (5, 1);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (5, 2);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 1);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 2);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 3);
+                    INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 4);
+                    ");
+                }
+            }
+        }
     }
 }
