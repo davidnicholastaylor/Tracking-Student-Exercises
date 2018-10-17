@@ -42,28 +42,28 @@ INSERT INTO Exercise(ExerciseName, ExerciseLanguage) VALUES ('Battle of the Band
 INSERT INTO Exercise(ExerciseName, ExerciseLanguage) VALUES ('React Nutshell', 'JSX');
 INSERT INTO Exercise(ExerciseName, ExerciseLanguage) VALUES ('Library', 'C#');
 
-INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (9, 1);
-INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (9, 3);
 INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (8, 1);
 INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (8, 3);
-INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (8, 4);
-INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (6, 1);
-INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (6, 2);
+INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (7, 1);
+INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (7, 3);
+INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (7, 4);
 INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (5, 1);
 INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (5, 2);
-INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (5, 3);
-INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (5, 4);
+INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 1);
+INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 2);
+INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 3);
+INSERT INTO StudentExercise(StudentId, ExerciseId) VALUES (4, 4);
 
 
-INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Helen', 'Hades', 7);
-INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Jon', 'Tron', 7);
-INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Lily', 'Paddington', 6);
-INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Madi', 'Bobadi', 6);
-INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Alex', 'Axel', 5);
+INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Helen', 'Hades', 3);
+INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Jon', 'Tron', 3);
+INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Lily', 'Paddington', 2);
+INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Madi', 'Bobadi', 2);
+INSERT INTO Student(FirstName, LastName, CohortId) VALUES ('Alex', 'Axel', 1);
 
-INSERT INTO Instructor(FirstName, LastName, CohortId) VALUES ('Steve', 'Madden', 5);
-INSERT INTO Instructor(FirstName, LastName, CohortId) VALUES ('Meg', 'Armstrong', 6);
-INSERT INTO Instructor(FirstName, LastName, CohortId) VALUES ('Kimmy', 'Falcon', 7);
+INSERT INTO Instructor(FirstName, LastName, CohortId) VALUES ('Steve', 'Madden', 1);
+INSERT INTO Instructor(FirstName, LastName, CohortId) VALUES ('Meg', 'Armstrong', 2);
+INSERT INTO Instructor(FirstName, LastName, CohortId) VALUES ('Kimmy', 'Falcon', 3);
 
 SELECT * FROM Cohort co
 JOIN Student stu ON stu.CohortId = co.Id
